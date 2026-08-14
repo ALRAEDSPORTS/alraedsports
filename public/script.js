@@ -7,7 +7,7 @@ const TOURNAMENT_CONFIG = {
   date: '27 August 2026',
   reportingTime: '10:00 AM',
   whatsappNumber: '971561792334',
-  formspreeEndpoint: 'https://formspree.io/f/xwleqrvd',
+  registrationEndpoint: 'https://script.google.com/macros/s/AKfycbysKKwh8jjoX5kFVs4BzPcqsBzm2IKVF_rmY_X3Zpl-E7F69Tnp6h5DwoVWdO45Ppcz/exec',
   currentPage: 'landing'  // Track current page
 };
 
@@ -207,34 +207,21 @@ async function handleFormSubmit(e) {
       batch: document.getElementById('batch').value.trim()
     };
 
-    // Send registration to Formspree
-    const response = await fetch(TOURNAMENT_CONFIG.formspreeEndpoint, {
+    // Send registration to the Google Sheets Apps Script web app.
+    // no-cors is required because Apps Script does not return CORS headers.
+    await fetch(TOURNAMENT_CONFIG.registrationEndpoint, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify(formData)
+      body: new URLSearchParams(formData)
     });
 
-    const result = await response.json().catch(() => ({}));
-
-    if (response.ok) {
-      // Show success page
-      resetSubmitButton();
-      showPage('success');
-      clearAllValidation();
-    } else {
-      // Handle Formspree submission error
-      const errorMessage = result.errors
-        ? result.errors.map(error => error.message).join(' ')
-        : 'Registration failed. Please try again.';
-      showFormError(errorMessage);
-      
-      // Re-enable submit button
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-    }
+    // Show success page after the Apps Script request has been sent.
+    resetSubmitButton();
+    showPage('success');
+    clearAllValidation();
   } catch (error) {
     console.error('Error submitting form:', error);
     showFormError('We couldn\'t complete your registration right now. Please try again in a moment. If the problem continues, contact us on WhatsApp.');
