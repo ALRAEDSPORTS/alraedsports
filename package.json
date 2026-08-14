@@ -1,0 +1,22 @@
+{
+  "name": "alraed-tournament-registration",
+  "version": "1.0.0",
+  "description": "Professional tournament registration website for Alraed Sports",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "tournament",
+    "registration",
+    "sports"
+  ],
+  "author": "Alraed Sports",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "csv-parser": "^3.0.0"
+  }
+}
