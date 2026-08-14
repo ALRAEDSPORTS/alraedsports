@@ -1,4 +1,4 @@
-## Hi there 👋
+## Welcome to Summer Camp Tournoment 2026 👋
 
 <!--
 **ALRAEDSPORTS/ALRAEDSPORTS** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
