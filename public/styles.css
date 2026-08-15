@@ -107,6 +107,19 @@ body {
 .page.active {
   display: block;
 }
+.tournament-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tournament-button:hover {
+  text-decoration: underline;
+}
 
 #landing.page.active,
 #success.page.active {
