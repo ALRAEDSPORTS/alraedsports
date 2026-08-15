@@ -43,6 +43,18 @@ function resetForm() {
   clearAllValidation();
   showPage('registration');
 }
+function scrollToStudentName() {
+  const studentNameField = document.getElementById('studentName');
+
+  if (studentNameField) {
+    studentNameField.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+    studentNameField.focus();
+  }
+}
 
 function resetSubmitButton() {
   const submitBtn = document.getElementById('submitBtn');
