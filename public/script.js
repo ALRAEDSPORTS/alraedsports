@@ -85,12 +85,6 @@ const validationRules = {
     },
     error: 'Please enter a valid age (5-25).'
   },
-  batch: {
-    validate: (value) => {
-      return value !== 'Select Batch' && value.trim().length > 0;
-    },
-    error: 'Please select a batch.'
-  }
 };
 
 function validateField(fieldName) {
@@ -204,7 +198,6 @@ async function handleFormSubmit(e) {
       parentName: document.getElementById('parentName').value.trim(),
       phoneNumber: document.getElementById('phoneNumber').value.trim(),
       age: document.getElementById('age').value.trim(),
-      batch: document.getElementById('batch').value.trim()
     };
 
     // Send registration to the Google Sheets Apps Script web app.
